@@ -13,4 +13,20 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Setting</string>
     <string name="menu_send">Share</string>
+    <string name="enter_email">Enter Email (a@example.com)</string>
+    <string name="enter_password">Enter Password (at least 6 digit)</string>
+    <string name="re_enter_password">Re Enter Password (at least 6 digit)</string>
+    <string name="forgot_password">forgot password</string>
+    <string name="do_not_have_account">Don\'t have an account? Create One</string>
+    <string name="condition_agremment">I agree to all terms and conditios</string>
+    <string name="have_and_account_">Have an account? Sign in then</string>
+
+
+    <string name="full_name">Enter Full Name</string>
+    <string name="enter_matricul">Enter Matricul Number</string>
+    <string name="enter_level">Enter level of studies</string>
+    <string name="enter_faculty">Enter School Name</string>
+    <string name="enter_department">Enter Department Name</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="save_info">Save Info</string>
 </resources>

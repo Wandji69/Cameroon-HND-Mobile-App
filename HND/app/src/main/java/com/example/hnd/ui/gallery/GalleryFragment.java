@@ -20,6 +20,7 @@ public class GalleryFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        //galleryViewModel help us display the fragment of R.layout.fragment_gallery
         galleryViewModel =
                 ViewModelProviders.of(this).get(GalleryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
@@ -31,5 +32,7 @@ public class GalleryFragment extends Fragment {
             }
         });
         return root;
+
+
     }
 }

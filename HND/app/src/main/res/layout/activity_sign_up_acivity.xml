@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginAcivity">
+    tools:context=".SignUpAcivity">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -29,12 +28,11 @@
                 android:id="@+id/sign_in_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/circular_background"
-                android:text="SIGN IN INTO CAMEROON HND APP"
+                android:text="REGISTER INTO CAMEROON HND APP"
                 android:layout_marginLeft="@dimen/dimension_20"
                 android:layout_marginRight="@dimen/dimension_20"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorBlack"
                 android:textSize="40sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -44,13 +42,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:weightSum="4"
             android:orientation="vertical"
-            android:paddingLeft="@dimen/dimension_20"
             android:paddingTop="@dimen/dimension_60"
-            android:paddingRight="@dimen/dimension_20"
             android:paddingBottom="@dimen/dimension_60"
-            android:visibility="visible"
-            android:weightSum="4">
+            android:paddingLeft="@dimen/dimension_20"
+            android:paddingRight="@dimen/dimension_20"
+            tools:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,61 +58,72 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/enter_email_02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/enter_email"
-                    android:inputType="textEmailAddress"
+                    android:textSize="@dimen/dimension_20"
+                    android:textColorHint="@color/colorBlack"
                     android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorBlackPrimaryText"
-                    android:textSize="@dimen/dimension_20" />
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/enter_email"/>
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/enter_password_02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimension_20"
+                    android:textColorHint="@color/colorBlack"
+                    android:textColor="@color/colorBlack"
                     android:ems="10"
                     android:hint="@string/enter_password"
-                    android:inputType="textPassword"
+                    android:inputType="textPassword" />
+
+                <EditText
+                    android:id="@+id/re_enter_password_02"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimension_20"
+                    android:textColorHint="@color/colorBlack"
                     android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorBlackPrimaryText"
-                    android:textSize="@dimen/dimension_20" />
+                    android:ems="10"
+                    android:hint="@string/re_enter_password"
+                    android:inputType="textPassword" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right">
+                    android:gravity="center">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/forgot_password"
+                        android:textStyle="bold"
                         android:textColor="@color/colorBlack"
                         android:textSize="15dp"
-                        android:textStyle="bold" />
+                        android:text="@string/condition_agremment" />
                 </RelativeLayout>
             </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"
-                android:gravity="center">
+                android:gravity="center"
+                android:layout_weight="1.5">
 
                 <Button
-                    android:id="@+id/sign_in"
+                    android:id="@+id/sign_up_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/circular_background"
-                    android:paddingLeft="@dimen/dimension_20"
-                    android:paddingTop="@dimen/dimension_8dp"
-                    android:paddingRight="@dimen/dimension_20"
-                    android:paddingBottom="@dimen/dimension_8dp"
-                    android:text="LOG IN"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorBlack"
                     android:textSize="@dimen/dimension_30"
-                    android:textStyle="bold" />
+                    android:text="Sign up"
+                    android:textStyle="bold"
+                    android:paddingLeft="@dimen/dimension_20"
+                    android:paddingRight="@dimen/dimension_20"
+                    android:paddingTop="@dimen/dimension_8dp"
+                    android:paddingBottom="@dimen/dimension_8dp"
+                    android:background="@drawable/circular_background"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -124,17 +133,16 @@
                 android:gravity="bottom">
 
                 <TextView
-                    android:id="@+id/dont_have_account"
+                    android:id="@+id/have_an_account"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/do_not_have_account"
-                    android:textAlignment="center"
+                    android:textStyle="bold"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/dimension_20"
-                    android:textStyle="bold" />
+                    android:textSize="15dp"
+                    android:text="@string/have_and_account_"
+                    android:textAlignment="center"/>
             </RelativeLayout>
 
         </LinearLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
