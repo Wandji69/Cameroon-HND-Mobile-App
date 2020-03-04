@@ -1,54 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpAcivity">
+    tools:context=".LoginAcivity">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:weightSum="3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/linearLayoutSignIn01"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_weight="2">
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayoutSignIn02"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/sign_in_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="REGISTER INTO CAMEROON HND APP"
                 android:layout_marginLeft="@dimen/dimension_20"
+                android:layout_marginTop="@dimen/dimension_80"
                 android:layout_marginRight="@dimen/dimension_20"
+                android:layout_marginBottom="@dimen/dimension_80"
+                android:text="REGISTER HERE"
                 android:textAlignment="center"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorPrimary"
                 android:textSize="40sp"
-                android:textStyle="bold" />
+                android:textStyle="italic" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/log_in_relative_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:weightSum="4"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayoutSignIn02"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutSignIn01" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSignIn02"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimension_20"
+            android:background="@color/colorWhiteDark"
             android:orientation="vertical"
-            android:paddingTop="@dimen/dimension_60"
-            android:paddingBottom="@dimen/dimension_60"
             android:paddingLeft="@dimen/dimension_20"
+            android:paddingTop="@dimen/dimension_20"
             android:paddingRight="@dimen/dimension_20"
-            tools:visibility="visible">
+            android:paddingBottom="@dimen/dimension_20"
+            android:visibility="visible"
+            android:weightSum="4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,34 +74,34 @@
                     android:id="@+id/enter_email_02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/dimension_20"
-                    android:textColorHint="@color/colorBlack"
-                    android:textColor="@color/colorBlack"
                     android:ems="10"
+                    android:hint="@string/enter_email"
                     android:inputType="textEmailAddress"
-                    android:hint="@string/enter_email"/>
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorBlackPrimaryText"
+                    android:textSize="@dimen/dimension_20" />
 
                 <EditText
                     android:id="@+id/enter_password_02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/dimension_20"
-                    android:textColorHint="@color/colorBlack"
-                    android:textColor="@color/colorBlack"
                     android:ems="10"
                     android:hint="@string/enter_password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorBlackPrimaryText"
+                    android:textSize="@dimen/dimension_20" />
 
                 <EditText
                     android:id="@+id/re_enter_password_02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/dimension_20"
-                    android:textColorHint="@color/colorBlack"
-                    android:textColor="@color/colorBlack"
                     android:ems="10"
                     android:hint="@string/re_enter_password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorBlackPrimaryText"
+                    android:textSize="@dimen/dimension_20" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -98,37 +111,40 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
+                        android:text="@string/condition_agremment"
                         android:textColor="@color/colorBlack"
                         android:textSize="15dp"
-                        android:text="@string/condition_agremment" />
+                        android:textStyle="bold" />
                 </RelativeLayout>
             </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="1.5">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_40"
+                android:layout_weight="1.5"
+                android:gravity="center">
 
                 <Button
                     android:id="@+id/sign_up_button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/dimension_30"
-                    android:text="Sign up"
-                    android:textStyle="bold"
+                    android:background="@drawable/circular_background"
                     android:paddingLeft="@dimen/dimension_20"
-                    android:paddingRight="@dimen/dimension_20"
                     android:paddingTop="@dimen/dimension_8dp"
+                    android:paddingRight="@dimen/dimension_20"
                     android:paddingBottom="@dimen/dimension_8dp"
-                    android:background="@drawable/circular_background"/>
+                    android:text="Sign up"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/dimension_30"
+                    android:textStyle="bold" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension_20"
+                android:layout_marginBottom="@dimen/dimension_20"
                 android:layout_weight="1.5"
                 android:gravity="bottom">
 
@@ -136,13 +152,15 @@
                     android:id="@+id/have_an_account"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="15dp"
                     android:text="@string/have_and_account_"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15dp"
+                    android:textStyle="italic" />
             </RelativeLayout>
 
         </LinearLayout>
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

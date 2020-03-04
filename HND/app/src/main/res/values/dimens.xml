@@ -10,4 +10,5 @@
     <dimen name="dimension_30">30sp</dimen>
     <dimen name="dimension_15">15dp</dimen>
     <dimen name="dimension_40">40dp</dimen>
+    <dimen name="dimension_80">80dp</dimen>
 </resources>

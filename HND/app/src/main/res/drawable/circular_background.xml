@@ -5,6 +5,8 @@
         android:radius="@dimen/dimension_15"/>
     <stroke
         android:width="2dp"
-        android:color="@color/colorPrimary"/>
+        android:color="@color/colorPrimary" />
+    <solid
+        android:color="@color/colorPurpleClear"/>
 
 </shape>

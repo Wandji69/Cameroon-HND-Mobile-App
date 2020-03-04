@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,60 +7,71 @@
     android:layout_height="match_parent"
     tools:context=".LoginAcivity">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:weightSum="3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/linearLayoutSignIn01"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_weight="2">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayoutSignIn02"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/sign_in_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/circular_background"
-                android:text="SIGN IN INTO CAMEROON HND APP"
                 android:layout_marginLeft="@dimen/dimension_20"
+                android:layout_marginTop="@dimen/dimension_80"
                 android:layout_marginRight="@dimen/dimension_20"
+                android:layout_marginBottom="@dimen/dimension_80"
+                android:text="LOG IN HERE"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
                 android:textSize="40sp"
-                android:textStyle="bold" />
+                android:textStyle="italic" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/log_in_relative_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayoutSignIn02"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutSignIn01" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSignIn02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@color/colorWhiteDark"
             android:paddingLeft="@dimen/dimension_20"
-            android:paddingTop="@dimen/dimension_60"
+            android:paddingTop="@dimen/dimension_20"
             android:paddingRight="@dimen/dimension_20"
-            android:paddingBottom="@dimen/dimension_60"
+            android:paddingBottom="@dimen/dimension_20"
+            android:layout_marginBottom="@dimen/dimension_60"
             android:visibility="visible"
-            android:weightSum="4">
+            android:weightSum="4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/dimension_15"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/sign_in_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -71,7 +82,7 @@
                     android:textSize="@dimen/dimension_20" />
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/sign_in_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -99,12 +110,13 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dimension_40"
                 android:layout_weight="1.5"
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/sign_in"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/sign_in_button"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/circular_background"
                     android:paddingLeft="@dimen/dimension_20"
@@ -127,14 +139,16 @@
                     android:id="@+id/dont_have_account"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimension_20"
                     android:text="@string/do_not_have_account"
                     android:textAlignment="center"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/dimension_20"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/dimension_15"
                     android:textStyle="bold" />
             </RelativeLayout>
 
         </LinearLayout>
-    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
