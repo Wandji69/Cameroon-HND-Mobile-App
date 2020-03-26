@@ -12,7 +12,6 @@ public class AuthViewModel {
         else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             return "Valid Email Required";
         }
-
         else if (password.isEmpty() || password.length()<6){
             return "6 Characters For Password Required";
         }

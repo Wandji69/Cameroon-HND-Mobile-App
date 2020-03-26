@@ -55,7 +55,7 @@ public class LoginAcivity extends AppCompatActivity {
         emailStr = email.getText().toString();
         passwordStr = password.getText().toString();
 
-        if(!AuthViewModel.signInValidity(emailStr, passwordStr).isEmpty()){
+        if(AuthViewModel.signInValidity(emailStr, passwordStr) != null){
             Toast.makeText(this, AuthViewModel.signInValidity(emailStr, passwordStr), LENGTH_LONG).show();
         }else{
             goToMainActivity();
