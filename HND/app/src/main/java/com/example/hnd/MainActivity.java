@@ -1,27 +1,34 @@
 package com.example.hnd;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.hnd.uitil.Helper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-
 import android.view.View;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 import com.google.android.material.navigation.NavigationView;
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+    private Helper helper;
+    private View view;
+
+    private String currentUserID;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -43,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        mAuth = FirebaseAuth.getInstance();
+        helper = new Helper();
     }
 
     @Override
@@ -57,5 +67,30 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //check to see if user is signed in
+        currentUser = mAuth.getCurrentUser();
+        if(currentUser == null){
+            //helper.goToLoginActivity(view);
+            startActivity(new Intent(this, LoginAcivity.class));
+            finish();
+        }else {
+            currentUserID = currentUser.getUid();
+            checkUserExperience();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    private void checkUserExperience() {
+
     }
 }

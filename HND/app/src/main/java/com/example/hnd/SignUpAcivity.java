@@ -8,8 +8,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.hnd.auth.AuthListener;
+import com.example.hnd.auth.AuthViewModel;
+import com.example.hnd.uitil.Helper;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpAcivity extends AppCompatActivity {
+    private FirebaseAuth mAuth1;
+    private AuthViewModel authViewModel;
+    private AuthListener authListener;
+    private Helper helper;
+
 
     private EditText email, password, confirmPassword;
     private TextView haveAnAccount;
@@ -20,33 +31,30 @@ public class SignUpAcivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_acivity);
+        //get instance for authentication
+        mAuth1 = FirebaseAuth.getInstance();
 
-        email = findViewById(R.id.enter_email_02);
-        password = findViewById(R.id.enter_password_02);
-        confirmPassword = findViewById(R.id.re_enter_password_02);
+        authListener = new AuthListener();
+        authViewModel = new AuthViewModel();
+        helper = new Helper();
+
         haveAnAccount = findViewById(R.id.have_an_account);
         signUpButton = findViewById(R.id.sign_up_button);
 
         haveAnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createAccout();
-                goToLogInActivity();
+                helper.goToLoginActivity(v);
+                finish();
             }
         });
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToSetUpUserActivity();
+                authViewModel.authUserCreateAccount(v);
             }
         });
-    }
-
-    private void createAccout() {
-        emailStr = email.getText().toString();
-        passwordStr = password.getText().toString();
-        confirmPasswordStr = confirmPassword.getText().toString();
     }
 
     private void goToSetUpUserActivity() {
