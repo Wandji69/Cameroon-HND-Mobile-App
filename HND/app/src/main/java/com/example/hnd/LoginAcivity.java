@@ -45,16 +45,10 @@ public class LoginAcivity extends AppCompatActivity {
         doNotHaveAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                helper.goToSignUpActivity(v);
+                helper.goToSignUpActivity(getApplicationContext());
                 finish();
             }
         });
-    }
-
-    public void goToMainActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
     }
 
 }

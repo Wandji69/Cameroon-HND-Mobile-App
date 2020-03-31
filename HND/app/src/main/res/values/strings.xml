@@ -21,7 +21,7 @@
     <string name="have_and_account_">Have an account? Sign in then</string>
 
 
-    <string name="full_name">Enter Full Name</string>
+    <string name="user_name">Enter User Name</string>
     <string name="enter_matricul">Enter Matricul Number</string>
     <string name="enter_level">Enter level of studies</string>
     <string name="enter_faculty">Enter School Name</string>

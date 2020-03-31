@@ -1,29 +1,32 @@
 package com.example.hnd;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.hnd.uitil.Helper;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.example.hnd.uitil.Helper;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.Menu;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    private DatabaseReference myUserReference;
     private FirebaseUser currentUser;
     private Helper helper;
     private View view;
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+        myUserReference = FirebaseDatabase.getInstance().getReference().child("Users");
         helper = new Helper();
     }
 
@@ -73,14 +78,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         //check to see if user is signed in
-        currentUser = mAuth.getCurrentUser();
         if(currentUser == null){
-            //helper.goToLoginActivity(view);
-            startActivity(new Intent(this, LoginAcivity.class));
+            helper.goToSetUpUserActivity(getApplicationContext());
             finish();
         }else {
             currentUserID = currentUser.getUid();
-            checkUserExperience();
+            helper.ToastMessage(getApplicationContext(), currentUserID);
+            checkUserExperience(currentUserID);
         }
     }
 
@@ -90,7 +94,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity.class));
     }
 
-    private void checkUserExperience() {
-
+    private void checkUserExperience(final String currentUserID) {
+        myUserReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.hasChild(currentUserID)){
+                    helper.ToastMessage(getApplicationContext(), "Set up account info");
+                    helper.goToSetUpUserActivity(getApplicationContext());
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 }

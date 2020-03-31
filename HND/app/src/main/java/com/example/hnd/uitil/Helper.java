@@ -1,5 +1,6 @@
 package com.example.hnd.uitil;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -12,44 +13,40 @@ import com.example.hnd.SetUpUserActivity;
 import com.example.hnd.SignUpAcivity;
 
 public class Helper {
-    Context context;
-    /*public Helper(Context context){
-        this.context = context;
-    }*/
 
     public Helper(){
-
     }
 
-    public void Toastmessage(View view, String toastMessage){
-        Toast.makeText(view.getContext(), toastMessage, Toast.LENGTH_SHORT).show();
-    }
-    public void Toastmessage(Context context, String toastMessage){
+    public void ToastMessage(Context context, String toastMessage){
         Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT).show();
     }
 
-    public void goToMainActivity(View view){
-        Intent intent = new Intent(view.getContext(), MainActivity.class);
+    public void goToMainActivity(Context context){
+        Intent intent = new Intent(context,  MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        view.getContext().startActivity(intent);
+        context.startActivity(intent);
     }
 
-    public void goToLoginActivity(View view){
-        Intent intent = new Intent(view.getContext(), LoginAcivity.class);
-        view.getContext().startActivity(intent);
+    public void goToLoginActivity(Context context){
+        Intent intent = new Intent(context, LoginAcivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
     }
 
-    public void goToSetUpUserActivity(View view){
-        Intent intent = new Intent(view.getContext(), SetUpUserActivity.class);
+    public void goToSetUpUserActivity(Context context){
+        Intent intent = new Intent(context, SetUpUserActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        view.getContext().startActivity(intent);
+        context.startActivity(intent);
     }
 
-    public void goToSignUpActivity(View view){
-        Intent intent = new Intent(view.getContext(), SignUpAcivity.class);
+    public void goToSignUpActivity(Context context){
+        Intent intent = new Intent(context, SignUpAcivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        view.getContext().startActivity(intent);
+        context.startActivity(intent);
+    }
+
+    public void progressDialog(Context context){
+        ProgressDialog progressDialog = new ProgressDialog(context);
     }
 }
 

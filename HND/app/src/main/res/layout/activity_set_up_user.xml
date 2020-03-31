@@ -31,7 +31,7 @@
             android:layout_marginEnd="@dimen/dimension_20"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="@string/full_name"
+            android:hint="@string/user_name"
             android:textColorHint="@color/colorBlack"
             android:textColor="@color/colorBlack"
             app:layout_constraintEnd_toEndOf="parent"

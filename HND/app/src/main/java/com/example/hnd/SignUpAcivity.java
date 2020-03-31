@@ -44,7 +44,7 @@ public class SignUpAcivity extends AppCompatActivity {
         haveAnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                helper.goToLoginActivity(v);
+                helper.goToLoginActivity(getApplicationContext());
                 finish();
             }
         });
@@ -57,21 +57,10 @@ public class SignUpAcivity extends AppCompatActivity {
         });
     }
 
-    private void goToSetUpUserActivity() {
-        Intent intent = new Intent(this, SetUpUserActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        goToLogInActivity();
+        helper.goToLoginActivity(getApplicationContext());
     }
 
-    private void goToLogInActivity(){
-        Intent intent = new Intent(this, LoginAcivity.class);
-        startActivity(intent);
-        finish();
-    }
 }

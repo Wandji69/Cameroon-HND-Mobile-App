@@ -6,22 +6,16 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.hnd.Data.FirebaseCloud.FirebaseDatabaseViewModel;
 import com.example.hnd.auth.AuthViewModel;
 import com.example.hnd.uitil.Helper;
-import com.google.firebase.auth.FirebaseUser;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -32,7 +26,6 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class SetUpUserActivity extends AppCompatActivity {
     private Helper helper;
-    private FirebaseDatabaseViewModel firebaseDatabaseViewModel;
     private AuthViewModel authViewModel;
 
     private static final int PERMISSION_CODE_01 = 1001;
@@ -64,7 +57,7 @@ public class SetUpUserActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                authViewModel.saveAccountInfo(v);
             }
         });
     }
@@ -81,15 +74,17 @@ public class SetUpUserActivity extends AppCompatActivity {
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            helper.ToastMessage(this, "Image Cropped Successfully");
 
             if(resultCode == RESULT_OK){
+                helper.ToastMessage(this, "Cropped image gotten successfully");
                 authViewModel.uploadProfileImage(result.getUri(), this);
                 if(authViewModel.getProfileImageDownloadUrl() != null){
                     circleImageView.setImageURI(result.getUri());
                 }
             }
         }else{
-            helper.Toastmessage(this, "Error Message \n Image can't be cropped");
+            helper.ToastMessage(this, "Error Message \n Image can't be cropped");
         }
 
     }
@@ -124,19 +119,18 @@ public class SetUpUserActivity extends AppCompatActivity {
         switch (requestCode){
             case PERMISSION_CODE_01:
                 if(grantResults.length >0 && grantResults[0] == PERMISSION_GRANTED){
-                    helper.Toastmessage(this, "You granted READ storage permission to this app");
+                    helper.ToastMessage(this, "You granted READ storage permission to this app");
                 }else{
-                    helper.Toastmessage(this, "Storage Permission denied...!");
+                    helper.ToastMessage(this, "Storage Permission denied...!");
                 }
 
             case PERMISSION_CODE_02:
                 if(grantResults.length >0 && grantResults[0] == PERMISSION_GRANTED){
-                    helper.Toastmessage(this, "You granted WRITE storage permission to this app");
+                    helper.ToastMessage(this, "You granted WRITE storage permission to this app");
                 }else{
-                    helper.Toastmessage(this, "Storage Permission denied...!");
+                    helper.ToastMessage(this, "Storage Permission denied...!");
                 }
         }
     }
-
 
 }
